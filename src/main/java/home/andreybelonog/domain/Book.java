@@ -1,33 +1,21 @@
-package home.andreybelonog;
+package home.andreybelonog.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String title;
     private String authorFirstName;
     private String authorSecondName;
     private StringBuilder description;
 
-
-    public Book(long id, String title) {
-        this.id = id;
-        this.title = title;
-    }
-
-    public Book(int id, String title, String authorFirstName, String authorSecondName, StringBuilder description) {
-        this.id = id;
-        this.title = title;
-        this.authorFirstName = authorFirstName;
-        this.authorSecondName = authorSecondName;
-        this.description = description;
-    }
-
-    public Book(int id, String title, String authorFirstName, String authorSecondName) {
-        this.id = id;
-        this.title = title;
-        this.authorFirstName = authorFirstName;
-        this.authorSecondName = authorSecondName;
-    }
 
     public long getId() {
         return id;
