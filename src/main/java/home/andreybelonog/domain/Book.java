@@ -21,6 +21,10 @@ public class Book {
 
     }
 
+    public Book(String title) {
+        this.title = title;
+    }
+
     public Book(String title, String authorFullName) {
         this.title = title;
         this.authorFullName = authorFullName;
