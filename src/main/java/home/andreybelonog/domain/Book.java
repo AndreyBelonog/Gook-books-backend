@@ -17,6 +17,10 @@ public class Book {
     private StringBuilder description;
 
 
+    public Book(){
+
+    }
+
     public Book(String title, String authorFullName) {
         this.title = title;
         this.authorFullName = authorFullName;
