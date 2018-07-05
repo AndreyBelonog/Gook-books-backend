@@ -1,5 +1,6 @@
 package home.andreybelonog.controllers;
 
+import home.andreybelonog.domain.Book;
 import home.andreybelonog.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,12 @@ public class BookController {
 
     @PostMapping()
     public String addNewBook(@RequestParam String title){
-        return "Book has been created";
+        Book book = new Book();
+
+        book.setTitle(title);
+
+        bookRepository.save(book);
+
+        return String.format("%s book was added to collection", title);
     }
 }
