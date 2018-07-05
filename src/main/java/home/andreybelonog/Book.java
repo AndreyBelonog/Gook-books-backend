@@ -2,14 +2,14 @@ package home.andreybelonog;
 
 public class Book {
 
-    private int id;
+    private long id;
     private String title;
     private String authorFirstName;
     private String authorSecondName;
     private StringBuilder description;
 
 
-    public Book(int id, String title) {
+    public Book(long id, String title) {
         this.id = id;
         this.title = title;
     }
@@ -29,7 +29,7 @@ public class Book {
         this.authorSecondName = authorSecondName;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
