@@ -12,17 +12,20 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
-    static final String URL = "/api/book";
+    static final String URL = "/api/books";
 
 
     @PostMapping()
-    public String addNewBook(@RequestBody String title){
-        Book book = new Book();
-        book.setTitle(title);
+    public String addNewBook(@RequestBody Book book){
+        Book tempBook = new Book();
+        tempBook.setTitle(book.getTitle());
+        tempBook.setAuthorFullName(book.getAuthorFullName());
+        tempBook.setDescription(book.getDescription());
 
-        bookRepository.save(book);
 
-        return String.format("%s book was added to collection", title);
+        bookRepository.save(tempBook);
+
+        return String.format("%s book was added to collection", book.getTitle());
     }
 
     @GetMapping
