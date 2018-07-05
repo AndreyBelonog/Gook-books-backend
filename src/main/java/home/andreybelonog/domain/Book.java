@@ -12,17 +12,20 @@ public class Book {
     private long id;
 
     private String title;
-    private String authorFirstName;
-    private String authorSecondName;
+
+    private String authorFullName;
     private StringBuilder description;
 
 
-    public long getId() {
-        return id;
+    public Book(String title, String authorFullName) {
+        this.title = title;
+        this.authorFullName = authorFullName;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Book(String title, String authorFullName, StringBuilder description) {
+        this.title = title;
+        this.authorFullName = authorFullName;
+        this.description = description;
     }
 
     public String getTitle() {
@@ -33,20 +36,12 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthorFirstName() {
-        return authorFirstName;
+    public String getAuthorFullName() {
+        return authorFullName;
     }
 
-    public void setAuthorFirstName(String authorFirstName) {
-        this.authorFirstName = authorFirstName;
-    }
-
-    public String getAuthorSecondName() {
-        return authorSecondName;
-    }
-
-    public void setAuthorSecondName(String authorSecondName) {
-        this.authorSecondName = authorSecondName;
+    public void setAuthorFullName(String authorFullName) {
+        this.authorFullName = authorFullName;
     }
 
     public StringBuilder getDescription() {

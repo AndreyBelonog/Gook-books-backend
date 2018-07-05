@@ -1,20 +1,21 @@
 package home.andreybelonog.controllers;
 
-import home.andreybelonog.domain.Book;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import home.andreybelonog.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
+@RequestMapping(BookController.URL)
 public class BookController {
+    @Autowired
+    private BookRepository bookRepository;
 
-    private static final String TEMPLATE = "Here you will see: %s";
-    private static AtomicLong counter = new AtomicLong();
+    static final String URL = "/api/book";
 
-    @GetMapping("api/book")
-    public Book getBook(@RequestParam(value = "name", defaultValue = "DefaultBook") String name){
-        return null;
+
+    @PostMapping()
+    public String addNewBook(@RequestParam String title){
+        return "Book has been created";
     }
 }
