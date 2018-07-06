@@ -5,12 +5,11 @@ import home.andreybelonog.model.entity.Book;
 import java.util.List;
 
 public interface BookService {
-    String addBook(Book book);
+    void addBook(Book book);
 
-    String deleteBook(long id);
+    void deleteBook(long id);
 
-
-    String updateBook(Book book);
+    void updateBook(Book book);
 
     List<Book> getAll();
 }

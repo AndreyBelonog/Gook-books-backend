@@ -15,10 +15,8 @@ public class Book {
     private String authorFullName;
     private StringBuilder description;
 
+    public Book(){}
 
-    public Book(){
-
-    }
 
     public Book(String title) {
         this.title = title;

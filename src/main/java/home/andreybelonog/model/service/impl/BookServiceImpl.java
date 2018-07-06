@@ -21,7 +21,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public String addBook(Book book) {
+    public void addBook(Book book) {
         Book tempBook = new Book();
 
         tempBook.setTitle(book.getTitle());
@@ -29,15 +29,11 @@ public class BookServiceImpl implements BookService {
         tempBook.setDescription(book.getDescription());
 
         bookRepository.saveAndFlush(tempBook);
-
-        return String.format("%s had successfully been added to your storage", tempBook.getTitle());
     }
 
     @Override
-    public String deleteBook(long id) {
+    public void deleteBook(long id) {
         bookRepository.deleteById(id);
-
-        return "Your book has been deleted";
     }
 
     public Optional<Book> getById(Long id) {
@@ -45,10 +41,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public String updateBook(Book book) {
+    public void updateBook(Book book) {
         bookRepository.saveAndFlush(book);
-
-        return "Your book has been updated";
     }
 
     @Override

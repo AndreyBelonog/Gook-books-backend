@@ -20,18 +20,24 @@ public class BookController {
 
 
     @PostMapping()
-    public void addBook(@RequestBody Book book) {
+    public String addBook(@RequestBody Book book) {
         bookService.addBook(book);
+
+        return book.getTitle() + " has been successfully added to your storage, bro.";
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable("id") long id){
+    public String deleteBook(@PathVariable("id") long id){
         bookService.deleteBook(id);
+
+        return "Book has been removed";
     }
 
     @PutMapping()
-    public void updateBook(@RequestBody Book book){
+    public String updateBook(@RequestBody Book book){
         bookService.updateBook(book);
+
+        return "It doesn't work that way I expect yet";
     }
 
     @GetMapping
