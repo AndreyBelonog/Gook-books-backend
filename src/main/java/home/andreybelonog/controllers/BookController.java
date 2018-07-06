@@ -1,7 +1,7 @@
 package home.andreybelonog.controllers;
 
 import home.andreybelonog.model.entity.Book;
-import home.andreybelonog.model.repository.BookRepository;
+import home.andreybelonog.model.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,31 +10,32 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(BookController.URL)
 public class BookController {
 
-    private BookRepository bookRepository;
     static final String URL = "/api/books";
-
+    private BookService bookService;
 
     @Autowired
-    public BookController(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
     }
 
 
-//    @PostMapping()
-//    public String addNewBook(@RequestBody Book book) {
-//        Book tempBook = new Book();
-//        tempBook.setTitle(book.getTitle());
-//        tempBook.setAuthorFullName(book.getAuthorFullName());
-//        tempBook.setDescription(book.getDescription());
-//
-//
-//        bookRepository.save(tempBook);
-//
-//        return String.format("%s book was added to collection", book.getTitle());
-//    }
-//
-//    @GetMapping
-//    public Iterable<Book> getAll() {
-//        return bookRepository.findAll();
-//    }
+    @PostMapping()
+    public void addBook(@RequestBody Book book) {
+        bookService.addBook(book);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable("id") long id){
+        bookService.deleteBook(id);
+    }
+
+    @PutMapping()
+    public void updateBook(@RequestBody Book book){
+        bookService.updateBook(book);
+    }
+
+    @GetMapping
+    public Iterable<Book> getAll() {
+        return bookService.getAll();
+    }
 }
