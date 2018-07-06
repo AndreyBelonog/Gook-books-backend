@@ -1,21 +1,40 @@
 package home.andreybelonog.controllers;
 
-import home.andreybelonog.Book;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import home.andreybelonog.model.entity.Book;
+import home.andreybelonog.model.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
+@RequestMapping(BookController.URL)
 public class BookController {
 
-    private static final String TEMPLATE = "Here you will see: %s";
-    private static AtomicLong counter = new AtomicLong();
+    private BookRepository bookRepository;
+    static final String URL = "/api/books";
 
-    @GetMapping("api/book")
-    public Book getBook(@RequestParam(value = "name", defaultValue = "DefaultBook") String name){
-        return new Book(counter.incrementAndGet(),
-                        String.format(TEMPLATE, name));
+
+    @Autowired
+    public BookController(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+
+    @PostMapping()
+    public String addNewBook(@RequestBody Book book) {
+        Book tempBook = new Book();
+        tempBook.setTitle(book.getTitle());
+        tempBook.setAuthorFullName(book.getAuthorFullName());
+        tempBook.setDescription(book.getDescription());
+
+
+        bookRepository.save(tempBook);
+
+        return String.format("%s book was added to collection", book.getTitle());
+    }
+
+    @GetMapping
+    public Iterable<Book> getAll() {
+        return bookRepository.findAll();
     }
 }
