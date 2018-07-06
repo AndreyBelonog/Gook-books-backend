@@ -9,14 +9,19 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(BookController.URL)
 public class BookController {
-    @Autowired
-    private BookRepository bookRepository;
 
+    private BookRepository bookRepository;
     static final String URL = "/api/books";
 
 
+    @Autowired
+    public BookController(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
+
     @PostMapping()
-    public String addNewBook(@RequestBody Book book){
+    public String addNewBook(@RequestBody Book book) {
         Book tempBook = new Book();
         tempBook.setTitle(book.getTitle());
         tempBook.setAuthorFullName(book.getAuthorFullName());
@@ -29,7 +34,7 @@ public class BookController {
     }
 
     @GetMapping
-    public  Iterable<Book> getAll(){
+    public Iterable<Book> getAll() {
         return bookRepository.findAll();
     }
 }
