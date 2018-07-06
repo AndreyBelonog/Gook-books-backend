@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -27,28 +28,31 @@ public class BookServiceImpl implements BookService {
         tempBook.setAuthorFullName(book.getAuthorFullName());
         tempBook.setDescription(book.getDescription());
 
-        bookRepository.save(tempBook);
+        bookRepository.saveAndFlush(tempBook);
 
         return String.format("%s had successfully been added to your storage", tempBook.getTitle());
     }
 
     @Override
-    public void deleteBook(long id) {
+    public String deleteBook(long id) {
+        bookRepository.deleteById(id);
 
+        return "Your book has been deleted";
+    }
+
+    public Optional<Book> getById(Long id) {
+        return bookRepository.findById(id);
     }
 
     @Override
-    public Book getByName(String name) {
-        return null;
-    }
+    public String updateBook(Book book) {
+        bookRepository.saveAndFlush(book);
 
-    @Override
-    public Book updateBook(Book book) {
-        return null;
+        return "Your book has been updated";
     }
 
     @Override
     public List<Book> getAll() {
-        return null;
+        return bookRepository.findAll();
     }
 }
