@@ -5,7 +5,7 @@ import home.andreybelonog.model.entity.Book;
 import java.util.List;
 
 public interface BookService {
-    Book addBook(Book book);
+    String addBook(Book book);
 
     void deleteBook(long id);
 

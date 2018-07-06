@@ -20,8 +20,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book addBook(Book book) {
-        return null;
+    public String addBook(Book book) {
+        Book tempBook = new Book();
+
+        tempBook.setTitle(book.getTitle());
+        tempBook.setAuthorFullName(book.getAuthorFullName());
+        tempBook.setDescription(book.getDescription());
+
+        bookRepository.save(tempBook);
+
+        return String.format("%s had successfully been added to your storage", tempBook.getTitle());
     }
 
     @Override

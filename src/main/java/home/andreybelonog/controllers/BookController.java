@@ -20,21 +20,21 @@ public class BookController {
     }
 
 
-    @PostMapping()
-    public String addNewBook(@RequestBody Book book) {
-        Book tempBook = new Book();
-        tempBook.setTitle(book.getTitle());
-        tempBook.setAuthorFullName(book.getAuthorFullName());
-        tempBook.setDescription(book.getDescription());
-
-
-        bookRepository.save(tempBook);
-
-        return String.format("%s book was added to collection", book.getTitle());
-    }
-
-    @GetMapping
-    public Iterable<Book> getAll() {
-        return bookRepository.findAll();
-    }
+//    @PostMapping()
+//    public String addNewBook(@RequestBody Book book) {
+//        Book tempBook = new Book();
+//        tempBook.setTitle(book.getTitle());
+//        tempBook.setAuthorFullName(book.getAuthorFullName());
+//        tempBook.setDescription(book.getDescription());
+//
+//
+//        bookRepository.save(tempBook);
+//
+//        return String.format("%s book was added to collection", book.getTitle());
+//    }
+//
+//    @GetMapping
+//    public Iterable<Book> getAll() {
+//        return bookRepository.findAll();
+//    }
 }
