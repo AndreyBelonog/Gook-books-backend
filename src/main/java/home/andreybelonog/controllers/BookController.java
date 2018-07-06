@@ -1,7 +1,7 @@
 package home.andreybelonog.controllers;
 
-import home.andreybelonog.domain.Book;
-import home.andreybelonog.repository.BookRepository;
+import home.andreybelonog.model.entity.Book;
+import home.andreybelonog.model.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
