@@ -5,6 +5,7 @@ import home.andreybelonog.model.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @RestController
@@ -49,5 +50,10 @@ public class BookController {
     @GetMapping("/{id}")
     public Book getById(@PathVariable("id") long id){
         return bookService.getById(id);
+    }
+
+    @GetMapping("/getAll" + "/{authorFullName}")
+    public List<Book> findAllByAuthor(@PathVariable("authorFullName") String authorFullName){
+        return bookService.findAllByAuthor(authorFullName);
     }
 }

@@ -6,6 +6,7 @@ import home.andreybelonog.model.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -42,5 +43,17 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getAll() {
         return bookRepository.findAll();
+    }
+
+    @Override
+    public List<Book> findAllByAuthor(String authorFullName) {
+        List<Book> result = new ArrayList<>();
+
+        for(Book b : bookRepository.findAll()){
+            if(b.getAuthorFullName().equals(authorFullName)){
+                result.add(b);
+            }
+        }
+        return result;
     }
 }
