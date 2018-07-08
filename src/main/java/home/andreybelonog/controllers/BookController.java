@@ -5,6 +5,8 @@ import home.andreybelonog.model.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping(BookController.URL)
@@ -43,5 +45,10 @@ public class BookController {
     @GetMapping
     public Iterable<Book> getAll() {
         return bookService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Book getById(@PathVariable("id") long id){
+        return bookService.getById(id);
     }
 }
