@@ -56,4 +56,11 @@ public class BookController {
     public List<Book> findAllByAuthor(@PathVariable("authorFullName") String authorFullName){
         return bookService.findAllByAuthor(authorFullName);
     }
+
+    @DeleteMapping()
+    public String deleteAll(){
+        bookService.deleteAll();
+
+        return "Your entire collection has been deleted";
+    }
 }

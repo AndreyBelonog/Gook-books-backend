@@ -45,7 +45,6 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findAll();
     }
 
-    @Override
     public List<Book> findAllByAuthor(String authorFullName) {
         List<Book> result = new ArrayList<>();
 
@@ -55,5 +54,10 @@ public class BookServiceImpl implements BookService {
             }
         }
         return result;
+    }
+
+    @Override
+    public void deleteAll() {
+        bookRepository.deleteAll();
     }
 }
