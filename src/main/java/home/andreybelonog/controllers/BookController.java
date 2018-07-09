@@ -1,40 +1,66 @@
 package home.andreybelonog.controllers;
 
 import home.andreybelonog.model.entity.Book;
-import home.andreybelonog.model.repository.BookRepository;
+import home.andreybelonog.model.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
 @RequestMapping(BookController.URL)
 public class BookController {
 
-    private BookRepository bookRepository;
     static final String URL = "/api/books";
-
+    private BookService bookService;
 
     @Autowired
-    public BookController(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
     }
 
 
     @PostMapping()
-    public String addNewBook(@RequestBody Book book) {
-        Book tempBook = new Book();
-        tempBook.setTitle(book.getTitle());
-        tempBook.setAuthorFullName(book.getAuthorFullName());
-        tempBook.setDescription(book.getDescription());
+    public String addBook(@RequestBody Book book) {
+        bookService.addBook(book);
 
+        return book.getTitle() + " has been successfully added to your storage, bro.";
+    }
 
-        bookRepository.save(tempBook);
+    @DeleteMapping("/{id}")
+    public String deleteBook(@PathVariable("id") long id){
+        bookService.deleteBook(id);
 
-        return String.format("%s book was added to collection", book.getTitle());
+        return "Book has been removed";
+    }
+
+    @PutMapping()
+    public String updateBook(@RequestBody Book book){
+        bookService.updateBook(book);
+
+        return "It doesn't work that way I expect yet";
     }
 
     @GetMapping
     public Iterable<Book> getAll() {
-        return bookRepository.findAll();
+        return bookService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Book getById(@PathVariable("id") long id){
+        return bookService.getById(id);
+    }
+
+    @GetMapping("/getAll" + "/{authorFullName}")
+    public List<Book> findAllByAuthor(@PathVariable("authorFullName") String authorFullName){
+        return bookService.findAllByAuthor(authorFullName);
+    }
+
+    @DeleteMapping()
+    public String deleteAll(){
+        bookService.deleteAll();
+
+        return "Your entire collection has been deleted";
     }
 }

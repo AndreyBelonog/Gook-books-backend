@@ -13,12 +13,10 @@ public class Book {
 
     private String title;
     private String authorFullName;
-    private StringBuilder description;
+    private String description;
 
+    public Book(){}
 
-    public Book(){
-
-    }
 
     public Book(String title) {
         this.title = title;
@@ -29,7 +27,7 @@ public class Book {
         this.authorFullName = authorFullName;
     }
 
-    public Book(String title, String authorFullName, StringBuilder description) {
+    public Book(String title, String authorFullName, String description) {
         this.title = title;
         this.authorFullName = authorFullName;
         this.description = description;
@@ -51,11 +49,11 @@ public class Book {
         this.authorFullName = authorFullName;
     }
 
-    public StringBuilder getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(StringBuilder description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
