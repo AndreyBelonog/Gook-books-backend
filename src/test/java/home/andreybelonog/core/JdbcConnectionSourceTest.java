@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-public class JdbcConnectionTest {
+public class JdbcConnectionSourceTest {
     private String url;
 
     private String username;
@@ -15,7 +15,7 @@ public class JdbcConnectionTest {
     private String validationQuery;
 
     @Before
-    public void seyUp(){
+    public void seyUp() {
         url = "jdbc:postgresql://localhost/GookBookDB";
         username = "postgres";
         password = "pass";
