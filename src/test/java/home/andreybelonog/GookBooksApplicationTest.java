@@ -12,5 +12,6 @@ public class GookBooksApplicationTest {
     @Test
     public void whenApplicationsMainMethodInvokedThenApplicationStartsSuccessfully(){
         GookBooksApplication.main(new String[]{});
+
     }
 }
