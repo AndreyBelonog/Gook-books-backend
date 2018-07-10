@@ -10,8 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class GookBooksApplicationTest {
 
     @Test
-    public void whenApplicationsMainMethodInvokedThenApplicationStartsSuccessfully(){
+    public void whenApplicationsMainMethodInvokedThenApplicationStartsSuccessfully() {
         GookBooksApplication.main(new String[]{});
-
     }
 }
