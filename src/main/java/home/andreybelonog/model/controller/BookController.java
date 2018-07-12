@@ -1,4 +1,4 @@
-package home.andreybelonog.controllers;
+package home.andreybelonog.model.controller;
 
 import home.andreybelonog.model.entity.Book;
 import home.andreybelonog.model.service.BookService;
