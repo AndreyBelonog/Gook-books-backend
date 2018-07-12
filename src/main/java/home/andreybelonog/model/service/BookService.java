@@ -1,6 +1,6 @@
 package home.andreybelonog.model.service;
 
-import home.andreybelonog.model.entity.Book;
+import home.andreybelonog.model.Book;
 
 import java.util.List;
 

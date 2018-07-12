@@ -1,6 +1,6 @@
 package home.andreybelonog.model.controller;
 
-import home.andreybelonog.model.entity.Book;
+import home.andreybelonog.model.Book;
 import home.andreybelonog.model.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
